@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Chart</title>
+</head>
+<body>
+
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'WA', 'NY', 'CAL', 'FL', 'OR', 'NJ'],
+          ['2013',  50,   20,   40,    10,   25,   45],
+          ['2014',  20,   40,   10,    50,   35,   15],
+          ['2015',  40,   25,   45,    30,   10,   50],
+          ['2016',  30,   10,   50,    35,   45,   20]
+        ]);
+
+        var options = {
+          title: 'Sea Levels on the U.S. Coast Line',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+</body>
+</html>
